@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA,QAAQ;EACJ,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,aAAa;;AAIzB,aAAa;EACT,UAAU,EAAE,MAAM",
+"sources": ["single-event.scss"],
+"names": [],
+"file": "single-event.css"
+}

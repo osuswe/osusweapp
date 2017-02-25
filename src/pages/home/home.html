@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="title">
+            Home
+        </ion-title>
+        <ion-buttons end>
+            <button style="font-size: 20px" (click)="gotoProfile()" ion-button>
+                <ion-icon name="contact"></ion-icon>
+            </button>
+
+            <button ion-button (click)="logout()">
+                <p>Logout</p>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+
+        <ion-card-content>
+            <img src="assets/sweLogo.jpg">
+        </ion-card-content>
+
+    </ion-card>
+    <h3>What's SWE?</h3>
+    <p>SWE is an international organization focused on stimulating women to achieve their full potential in 
+        their careers as engineers and leaders. Ohio State's section of SWE is devoted to providing professional
+         and social events to prepare students for the next step in their lives. 
+    </p>
+
+    <h3>SWE Mission</h3>
+    <p>Stimulate women to achieve full potential in careers as engineers and leaders, expand the image of the
+        engineering profession as a positive force in improving the quality of life, and demonstrate the value of
+        diversity.
+    </p>
+    <h3>Vision</h3>
+    <p>To be key to the success of women in engineering and technology.
+    </p>
+
+</ion-content>

@@ -1,0 +1,45 @@
+<!--
+  Generated template for the Directory page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+	<ion-toolbar>
+		<ion-title class="title">
+			Directory
+		</ion-title>
+		<ion-buttons end>
+			<button style="font-size: 20px" (click)="gotoProfile()" ion-button>
+				<ion-icon name="contact"></ion-icon>
+			</button>
+
+			<button ion-button (click)="logout()">
+				<p>Logout</p>
+			</button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+	<ion-list>
+		<ion-grid>
+			<ion-item *ngFor="let member of members" text-wrap>
+				<ion-row>
+					<ion-col width-60>
+						<span (click)="toSingleMemberPage(member)">{{member.fullName}}</span>
+					</ion-col>
+					<ion-col style="text-align: center" width-20>
+						<ion-icon style="color: #dcc251; font-size:20px;" (click)="sendMail(member.username)" name="mail" width-20></ion-icon>
+					</ion-col>
+					<ion-col style="text-align: center" width-20>
+						<ion-icon style="color: #dcc251; font-size:20px;" (click)="call(member.phone)" name="call" width-20></ion-icon>
+					</ion-col>
+				</ion-row>
+			</ion-item>
+		</ion-grid>
+
+	</ion-list>
+</ion-content>

@@ -1,0 +1,31 @@
+<!--
+  Generated template for the Login page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>Ohio State SWE</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<p class="invalid" *ngIf="showInvalid">{{invalidMessage}}</p>
+	<div style="background:white">
+		<ion-item>
+			<ion-label floating>Lastname.#</ion-label>
+			<ion-input (keypress)="isValid()" (keyup)="isValid()" style="padding:10px" [(ngModel)]="input_username" type="text" value=""></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating>Password</ion-label>
+			<ion-input (keypress)="isValid()" (keyup)="isValid()" [(ngModel)]="input_password" type="password"></ion-input>
+		</ion-item>
+	</div>
+  <br>
+	<button class="sweButton" ion-button (click)="login()" block>Login</button>
+	<button class="sweButton" ion-button (click)="toSignup()" block>Signup</button>
+</ion-content>

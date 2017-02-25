@@ -1,0 +1,232 @@
+<!--
+  Generated template for the EventsPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="title">
+            Events
+        </ion-title>
+        <ion-buttons end>
+            <button style="font-size: 20px" (click)="gotoProfile()" ion-button>
+                <ion-icon name="contact"></ion-icon>
+            </button>
+
+            <button ion-button (click)="logout()">
+                <p>Logout</p>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-item>
+        <ion-label>Select Year</ion-label>
+        <ion-select (ionChange)="doRefresh(null)" [(ngModel)]="selectedDate">
+            <ion-option value="{{currentYear}}" selected="true">{{currentYear}}</ion-option>
+            <ion-option value="{{currentYear + 1}}">{{currentYear + 1}}</ion-option>
+            <!--<ion-option value="{{currentYear + 2}}">{{currentYear + 2}}</ion-option>-->
+        </ion-select>
+    </ion-item>
+    <ion-list>
+
+        <ion-list-header (click)="changeMonthDisplay('january')">
+            January <span>{{selectedDate}}</span>
+            <ion-badge item-right *ngIf="janCount>0">{{janCount}}</ion-badge>
+        </ion-list-header>
+        <div ngClass="" *ngIf="display=='january'">
+            <span *ngFor="let event of janEvents">
+            <ion-item *ngIf="event.happened == false" text-wrap>
+                <div class="eventTitle" (click)="toSingleEvent(event)">{{event.title}}</div>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until > 0">In {{event.time_until}} hours
+                </ion-badge>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until <= 0">Happening</ion-badge>
+            </ion-item>
+                </span>
+        </div>
+        <br>
+        <ion-list-header (click)="changeMonthDisplay('february')">
+            February <span>{{selectedDate}}</span>
+            <ion-badge item-right *ngIf="febCount>0">{{febCount}}</ion-badge>
+
+        </ion-list-header>
+        <div ngClass="" *ngIf="display=='february'">
+            <span *ngFor="let event of febEvents">
+            <ion-item *ngIf="event.happened == false" text-wrap>
+                <div class="eventTitle" (click)="toSingleEvent(event)">{{event.title}}</div>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until > 0">In {{event.time_until}} hours
+                </ion-badge>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until <= 0">Happening</ion-badge>
+
+            </ion-item>
+        </span>
+        </div>
+
+        <br>
+        <ion-list-header (click)="changeMonthDisplay('march')">
+            March <span>{{selectedDate}}</span>
+            <ion-badge item-right *ngIf="marchCount>0">{{marchCount}}</ion-badge>
+        </ion-list-header>
+        <div ngClass="" *ngIf="display=='march'">
+            <span *ngFor="let event of marchEvents">
+            <ion-item *ngIf="event.happened == false" text-wrap>
+                <div class="eventTitle" (click)="toSingleEvent(event)">{{event.title}}</div>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until > 0">In {{event.time_until}} hours
+                </ion-badge>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until <= 0">Happening</ion-badge>
+
+            </ion-item>
+                </span>
+        </div>
+        <br>
+        <ion-list-header (click)="changeMonthDisplay('april')">
+            April <span>{{selectedDate}}</span>
+            <ion-badge item-right *ngIf="aprilCount>0">{{aprilCount}}</ion-badge>
+        </ion-list-header>
+        <div ngClass="" *ngIf="display=='april'">
+            <span *ngFor="let event of aprilEvents">
+            <ion-item *ngIf="event.happened == false" text-wrap>
+                <div class="eventTitle" (click)="toSingleEvent(event)">{{event.title}}</div>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until > 0">In {{event.time_until}} hours
+                </ion-badge>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until <= 0">Happening</ion-badge>
+
+            </ion-item>
+                </span>
+        </div>
+        <br>
+        <ion-list-header (click)="changeMonthDisplay('may')">
+            May <span>{{selectedDate}}</span>
+            <ion-badge item-right *ngIf="mayCount>0">{{mayCount}}</ion-badge>
+        </ion-list-header>
+        <div ngClass="" *ngIf="display=='may'">
+            <span *ngFor="let event of mayEvents">
+                <ion-item *ngIf="event.happened == false" text-wrap>
+                    <div class="eventTitle" (click)="toSingleEvent(event)">{{event.title}}</div>
+                    <ion-badge item-right *ngIf="event.badge==true && event.time_until > 0">In {{event.time_until}} hours
+                    </ion-badge>
+                    <ion-badge item-right *ngIf="event.badge==true && event.time_until <= 0">Happening</ion-badge>
+
+                </ion-item>
+            </span>
+
+        </div>
+        <br>
+        <ion-list-header (click)="changeMonthDisplay('june')">
+            June <span>{{selectedDate}}</span>
+            <ion-badge item-right *ngIf="juneCount>0">{{juneCount}}</ion-badge>
+        </ion-list-header>
+        <div ngClass="" *ngIf="display=='june'">
+            <span *ngFor="let event of juneEvents">
+            <ion-item *ngIf="event.happened == false" text-wrap>
+                <div class="eventTitle" (click)="toSingleEvent(event)">{{event.title}}</div>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until > 0">In {{event.time_until}} hours
+                </ion-badge>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until <= 0">Happening</ion-badge>
+
+            </ion-item>
+                </span>
+        </div>
+        <br>
+        <ion-list-header (click)="changeMonthDisplay('july')">
+            July <span>{{selectedDate}}</span>
+            <ion-badge item-right *ngIf="julyCount>0">{{julyCount}}</ion-badge>
+        </ion-list-header>
+        <div ngClass="" *ngIf="display=='july'">
+            <span *ngFor="let event of julyEvents">
+            <ion-item *ngIf="event.happened == false" text-wrap>
+                <div (click)="toSingleEvent(event)">{{event.title}}</div>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until > 0">In {{event.time_until}} hours
+                </ion-badge>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until <= 0">Happening</ion-badge>
+
+            </ion-item>
+                </span>
+        </div>
+        <br>
+        <ion-list-header (click)="changeMonthDisplay('august')">
+            August <span>{{selectedDate}}</span>
+            <ion-badge item-right *ngIf="augCount>0">{{augCount}}</ion-badge>
+        </ion-list-header>
+        <div ngClass="" *ngIf="display=='august'">
+            <span *ngFor="let event of augEvents">
+            <ion-item *ngIf="event.happened == false" text-wrap>
+                <div class="eventTitle" (click)="toSingleEvent(event)">{{event.title}}</div>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until > 0">In {{event.time_until}} hours
+                </ion-badge>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until <= 0">Happening</ion-badge>
+
+            </ion-item>
+                </span>
+        </div>
+        <br>
+        <ion-list-header (click)="changeMonthDisplay('september')">
+            September <span>{{selectedDate}}</span>
+            <ion-badge item-right *ngIf="septCount>0">{{septCount}}</ion-badge>
+        </ion-list-header>
+        <div ngClass="" *ngIf="display=='september'">
+            <span *ngFor="let event of septEvents">
+            <ion-item *ngIf="event.happened == false" text-wrap>
+                <div class="eventTitle" (click)="toSingleEvent(event)">{{event.title}}</div>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until > 0">In {{event.time_until}} hours
+                </ion-badge>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until <= 0">Happening</ion-badge>
+
+            </ion-item>
+                </span>
+        </div>
+        <br>
+        <ion-list-header (click)="changeMonthDisplay('october')">
+            October <span>{{selectedDate}}</span>
+            <ion-badge item-right *ngIf="octCount>0">{{octCount}}</ion-badge>
+        </ion-list-header>
+        <div ngClass="" *ngIf="display=='october'">
+            <span *ngFor="let event of octEvents">
+            <ion-item *ngIf="event.happened == false" text-wrap>
+                <div class="eventTitle" (click)="toSingleEvent(event)">{{event.title}}</div>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until > 0">In {{event.time_until}} hours
+                </ion-badge>
+                <ion-badge item-right *ngIf="event.badge==true && event.time_until <= 0">Happening</ion-badge>
+
+            </ion-item>
+                </span>
+        </div>
+        <br>
+        <ion-list-header (click)="changeMonthDisplay('november')">
+            November <span>{{selectedDate}}</span>
+            <ion-badge item-right *ngIf="novCount>0">{{novCount}}</ion-badge>
+        </ion-list-header>
+        <div ngClass="" *ngIf="display=='november'">
+			<span *ngFor="let event of novEvents">
+			<ion-item *ngIf="event.happened == false" text-wrap>
+				<div class="eventTitle" (click)="toSingleEvent(event)">{{event.title}}</div>
+				<ion-badge item-right
+                           *ngIf="event.badge==true && event.time_until > 0">In {{event.time_until}} hours</ion-badge>
+				<ion-badge item-right *ngIf="event.badge==true && event.time_until <= 0">Happening</ion-badge>
+			</ion-item>
+			</span>
+        </div>
+        <br>
+        <ion-list-header (click)="changeMonthDisplay('december')">
+            December <span>{{selectedDate}}</span>
+            <ion-badge item-right *ngIf="decCount>0">{{decCount}}</ion-badge>
+        </ion-list-header>
+        <div ngClass="" *ngIf="display=='december'">
+			<span *ngFor="let event of decEvents">
+			<ion-item *ngIf="event.happened == false" text-wrap>
+					<div class="eventTitle" (click)="toSingleEvent(event)">{{event.title}}</div>
+					<ion-badge item-right *ngIf="event.badge==true && event.time_until > 0">In {{event.time_until}} hours</ion-badge>
+					<ion-badge item-right *ngIf="event.badge==true && event.time_until <= 0">Happening</ion-badge>
+			</ion-item>
+			</span>
+        </div>
+
+    </ion-list>
+</ion-content>
